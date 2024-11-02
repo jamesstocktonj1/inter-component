@@ -1,0 +1,26 @@
+package custom:inter-component@0.1.0-draft;
+
+interface person {
+    record person {
+        name: string,
+        age: u64
+    }
+
+    type person-id = string;
+
+    variant error {
+        none,
+        not-found,
+        already-exists,
+        db-error
+    }
+
+    set-person: func(
+        id: person-id, 
+        value: person
+    ) -> error;
+
+    get-person: func(
+        id: person-id
+    ) -> result<person, error>;
+}

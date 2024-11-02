@@ -9,7 +9,22 @@ spec:
     - name: inter-endpoint
       type: component
       properties:
-        image: file://./endpoint/build/http_hello_world_s.wasm
+        image: file://./endpoint/build/http-hello-world_s.wasm
+      traits:
+        - type: spreadscaler
+          properties:
+            instances: 1
+        - type: link
+          properties:
+            target: inter-record
+            namespace: custom
+            package: inter-component
+            interfaces: [person]
+
+    - name: inter-record
+      type: component
+      properties:
+        image: file://./record/build/http-hello-world_s.wasm
       traits:
         - type: spreadscaler
           properties:

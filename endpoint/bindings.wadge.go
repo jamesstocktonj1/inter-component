@@ -6,6 +6,7 @@ package main
 
 import (
 	github_com__bytecodealliance__wasm___tools___go__cm "github.com/bytecodealliance/wasm-tools-go/cm"
+	github_com__jamesstocktonj1__inter___component__endpoint__gen__custom__inter___component__person "github.com/jamesstocktonj1/inter-component/endpoint/gen/custom/inter-component/person"
 	go_wasmcloud_dev__component__gen__wasi__clocks__monotonic___clock "go.wasmcloud.dev/component/gen/wasi/clocks/monotonic-clock"
 	go_wasmcloud_dev__component__gen__wasi__http__outgoing___handler "go.wasmcloud.dev/component/gen/wasi/http/outgoing-handler"
 	go_wasmcloud_dev__component__gen__wasi__http__types "go.wasmcloud.dev/component/gen/wasi/http/types"
@@ -19,6 +20,66 @@ import (
 const _ string = runtime.Compiler
 
 var _ unsafe.Pointer
+
+//go:linkname wasmimport_GetPerson github.com/jamesstocktonj1/inter-component/endpoint/gen/custom/inter-component/person.wasmimport_GetPerson
+func wasmimport_GetPerson(id0 *uint8, id1 uint32, result *github_com__bytecodealliance__wasm___tools___go__cm.Result[github_com__jamesstocktonj1__inter___component__endpoint__gen__custom__inter___component__person.PersonShape, github_com__jamesstocktonj1__inter___component__endpoint__gen__custom__inter___component__person.Person, github_com__jamesstocktonj1__inter___component__endpoint__gen__custom__inter___component__person.Error]) {
+	var __p runtime.Pinner
+	defer __p.Unpin()
+	if __err := wadge.WithCurrentInstance(func(__instance *wadge.Instance) error {
+		return __instance.Call("custom:inter-component/person@0.1.0-draft", "get-person", func() unsafe.Pointer {
+			ptr := unsafe.Pointer(id0)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&id1)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(result)
+			__p.Pin(ptr)
+			return ptr
+		}())
+	}); __err != nil {
+		wadge.CurrentErrorHandler()(__err)
+	}
+	return
+}
+
+//go:linkname wasmimport_SetPerson github.com/jamesstocktonj1/inter-component/endpoint/gen/custom/inter-component/person.wasmimport_SetPerson
+func wasmimport_SetPerson(id0 *uint8, id1 uint32, value0 *uint8, value1 uint32, value2 uint64) (result0 uint32) {
+	var __p runtime.Pinner
+	defer __p.Unpin()
+	if __err := wadge.WithCurrentInstance(func(__instance *wadge.Instance) error {
+		return __instance.Call("custom:inter-component/person@0.1.0-draft", "set-person", func() unsafe.Pointer {
+			ptr := unsafe.Pointer(id0)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&id1)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(value0)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&value1)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&value2)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&result0)
+			__p.Pin(ptr)
+			return ptr
+		}())
+	}); __err != nil {
+		wadge.CurrentErrorHandler()(__err)
+	}
+	return
+}
 
 //go:linkname wasmimport_Now go.wasmcloud.dev/component/gen/wasi/clocks/monotonic-clock.wasmimport_Now
 func wasmimport_Now() (result0 uint64) {
@@ -1975,6 +2036,38 @@ func wasmimport_OutputStreamResourceDrop(self0 uint32) {
 	if __err := wadge.WithCurrentInstance(func(__instance *wadge.Instance) error {
 		return __instance.Call("wasi:io/streams@0.2.0", "[resource-drop]output-stream", func() unsafe.Pointer {
 			ptr := unsafe.Pointer(&self0)
+			__p.Pin(ptr)
+			return ptr
+		}())
+	}); __err != nil {
+		wadge.CurrentErrorHandler()(__err)
+	}
+	return
+}
+
+//go:linkname wasmimport_Log go.wasmcloud.dev/component/gen/wasi/logging/logging.wasmimport_Log
+func wasmimport_Log(level0 uint32, context0 *uint8, context1 uint32, message0 *uint8, message1 uint32) {
+	var __p runtime.Pinner
+	defer __p.Unpin()
+	if __err := wadge.WithCurrentInstance(func(__instance *wadge.Instance) error {
+		return __instance.Call("wasi:logging/logging@0.1.0-draft", "log", func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&level0)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(context0)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&context1)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(message0)
+			__p.Pin(ptr)
+			return ptr
+		}(), func() unsafe.Pointer {
+			ptr := unsafe.Pointer(&message1)
 			__p.Pin(ptr)
 			return ptr
 		}())

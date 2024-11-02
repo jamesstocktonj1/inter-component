@@ -2,6 +2,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/bytecodealliance/wasm-tools-go/cm"
 	"github.com/jamesstocktonj1/inter-component/record/gen/custom/inter-component/person"
 	"go.wasmcloud.dev/component/log/wasilog"
@@ -15,11 +17,18 @@ func init() {
 }
 
 func handleSetPerson(id person.PersonID, value person.Person) person.Error {
+	logger.Info("handling SetPerson")
+
 	return person.ErrorNone
 }
 
 func handleGetPerson(id person.PersonID) cm.Result[person.PersonShape, person.Person, person.Error] {
-	return cm.OK[cm.Result[person.PersonShape, person.Person, person.Error]](person.Person{})
+	logger.Info("handling GetPerson")
+
+	return cm.OK[cm.Result[person.PersonShape, person.Person, person.Error]](person.Person{
+		Name: fmt.Sprintf("Hello %s!", id),
+		Age:  1234,
+	})
 }
 
 func main() {}

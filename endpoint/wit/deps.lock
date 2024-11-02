@@ -1,0 +1,4 @@
+[inter-component]
+path = "../../wit"
+sha256 = "5717ba5f5e476135ac7fe80ae51e8dd848e26bbfc7493d7a9f4023a062e8f1a9"
+sha512 = "22f0dbe0e27cccdefa4adb003ecefd82b7737ce9a0023884ef94968168bd28aa9a6c82d80afa1b2ad79563bcfa337a7c7577fcdde20fadff90dc0fa20b3feb90"
