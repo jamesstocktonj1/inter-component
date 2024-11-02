@@ -9,6 +9,7 @@ interface person {
     type person-id = string;
 
     variant error {
+        none,
         not-found,
         already-exists,
         db-error

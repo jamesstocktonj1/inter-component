@@ -15,7 +15,7 @@ func init() {
 }
 
 func handleSetPerson(id person.PersonID, value person.Person) person.Error {
-	return person.ErrorAlreadyExists
+	return person.ErrorNone
 }
 
 func handleGetPerson(id person.PersonID) cm.Result[person.PersonShape, person.Person, person.Error] {
